@@ -35,8 +35,8 @@ public class Draw extends JComponent{
 		spawnEnemy();
 		
 		try{
-			image = ImageIO.read(resource);
-			backgroundImage = ImageIO.read(getClass().getResource("Rub_al_Khali_002.jpg"));
+			init image = ImageIO.read(resource);
+			backgroundImage = ImageIO.read(getClass().getResource("GameD1.jpg"));
 		}
 		catch(IOException e){
 			e.printStackTrace();
@@ -45,7 +45,7 @@ public class Draw extends JComponent{
 		height = image.getHeight();
 		width = image.getWidth();
 
-		startGame();
+		StartGame();
 	}
 
 	public void startGame(){
@@ -165,7 +165,7 @@ public class Draw extends JComponent{
 	public void moveLeft(){
 		x = x - 5;
 		reloadImage();
-		repaint();
+		repaint();  
 		checkCollision();
 	}
 
@@ -174,6 +174,13 @@ public class Draw extends JComponent{
 		reloadImage();
 		repaint();
 		checkCollision();
+	}
+
+	public void jump(){
+		x = x + 5;
+		reloadImage();
+		checkCollision();
+		jumpAnimation();
 	}
 
 	public void checkCollision(){
@@ -233,7 +240,7 @@ public class Draw extends JComponent{
 				// g.setColor(Color.BLUE);
 				// g.fillRect(monsters[c].xPos, monsters[c].yPos+5, monsters[c].width, monsters[c].height);
 				g.drawImage(monsters[c].image, monsters[c].xPos, monsters[c].yPos, this);
-				g.setColor(Color.GREEN);
+				g.setColor(Color.RED);
 				g.fillRect(monsters[c].xPos+7, monsters[c].yPos, monsters[c].life, 2);
 			}	
 		}
